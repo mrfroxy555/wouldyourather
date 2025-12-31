@@ -5,6 +5,17 @@ const Question = require('./models/Question');
 dotenv.config();
 
 const questions = [
+    "Inkább soha többé nem hallgatnál zenét, vagy soha többé nem néznél filmet?",
+    "Inkább egy hétig nem beszélnél, vagy egy hétig nem használnál telefont?",
+    "Inkább tudnál-e minden nyelvet beszélni, vagy inkább minden hangszeren játszani?",
+    "Inkább lennél süket vagy vak?",
+    "Inkább élnél tenger mellett vagy hegyek között?",
+    "Inkább élnél kávé nélkül vagy wifi nélkül?",
+    "Inkább sosem ihatsz vizet vagy sosem ehetsz kenyeret?",
+    "Inkább sosem ehetnél húst vagy sosem zöldséget?",
+    "Inkább mindig hű lennél önmagadhoz, vagy időnként megváltoznál másokért?",
+    "Inkább tudnád, hogy hazudnak neked, vagy soha nem tudnád meg, de boldog lennél?",
+    "Inkább úgy vágnál bele az új évbe, hogy nagy reményeid vannak, vagy hogy nincsenek elvárásaid?",
     "Inkább egy nagy lelki élményt kapnál évente egyszer, vagy sok apró, alig észrevehető megerősítést naponta?",
     "Inkább értenéd az összes bibliai tanítást, vagy csak egyet, de azt tökéletesen megélnéd?",
     "Inkább Isten azonnal kijavítaná a hibáidat, vagy hagyná, hogy magad tanulj belőlük?",
