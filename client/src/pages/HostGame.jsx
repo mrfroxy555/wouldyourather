@@ -141,43 +141,68 @@ const HostGame = () => {
             )}
 
             {gameState === 'RESULTS' && stats && (
-                <div className="flex-1 w-full max-w-6xl flex flex-col justify-center items-center gap-8">
-                    <h2 className="text-4xl font-bold mb-8">{question?.text}</h2>
+                <div className="flex-1 w-full max-w-6xl flex flex-col justify-center items-center gap-6 animate-in fade-in zoom-in duration-500">
+                    <h2 className="text-3xl font-bold mb-4 text-center px-4 glass-panel py-3">{question?.text}</h2>
 
-                    <div className="w-full flex gap-12 h-80 items-end justify-center">
-                        {/* Bar A */}
-                        <div className="w-1/3 flex flex-col items-center gap-3">
-                            <div className="flex flex-col items-center">
-                                <span className="text-4xl font-black text-blue-400">{stats.A}%</span>
-                                <span className="text-sm font-bold text-blue-300 uppercase tracking-tighter">{stats.countA} szavazat</span>
+                    <div className="w-full flex flex-col md:flex-row gap-8 h-[50vh] min-h-[400px]">
+                        {/* Option A Result */}
+                        <div className="flex-1 glass-panel relative overflow-hidden flex flex-col items-center justify-center p-8 group">
+                            {/* Fill Background */}
+                            <div
+                                className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-blue-600/60 to-blue-400/20 transition-all duration-1000 ease-out z-0 shadow-[0_0_50px_rgba(59,130,246,0.2)]"
+                                style={{ height: `${Math.max(stats.A, 5)}%` }}
+                            />
+
+                            <div className="relative z-10 flex flex-col items-center gap-4">
+                                <span className="text-7xl font-black text-white drop-shadow-lg">{stats.A}%</span>
+                                <div className="px-6 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                                    <span className="text-lg font-bold uppercase tracking-widest text-blue-200">
+                                        {stats.countA} Szavazat
+                                    </span>
+                                </div>
+                                <p className="text-2xl font-bold mt-4 text-center leading-tight max-w-xs">{a}</p>
                             </div>
-                            <div className="w-full flex-1 flex flex-col justify-end bg-blue-900/10 rounded-t-xl overflow-hidden min-h-[250px]">
-                                <div
-                                    style={{ height: `${Math.max(stats.A, 2)}%` }}
-                                    className="w-full bg-blue-500 transition-all duration-1000 shadow-[0_0_20px_rgba(59,130,246,0.5)]"
-                                />
-                            </div>
-                            <div className="p-4 bg-blue-900/30 rounded-xl w-full text-center text-sm font-medium border border-blue-500/20">{a}</div>
+
+                            {/* Winner Badge */}
+                            {stats.A > stats.B && (
+                                <div className="absolute top-4 right-4 bg-yellow-500 text-black font-black px-4 py-1 rounded-full text-xs uppercase tracking-widest shadow-lg animate-bounce">
+                                    Népszerűbb
+                                </div>
+                            )}
                         </div>
 
-                        {/* Bar B */}
-                        <div className="w-1/3 flex flex-col items-center gap-3">
-                            <div className="flex flex-col items-center">
-                                <span className="text-4xl font-black text-red-400">{stats.B}%</span>
-                                <span className="text-sm font-bold text-red-300 uppercase tracking-tighter">{stats.countB} szavazat</span>
+                        {/* Option B Result */}
+                        <div className="flex-1 glass-panel relative overflow-hidden flex flex-col items-center justify-center p-8 group">
+                            {/* Fill Background */}
+                            <div
+                                className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-red-600/60 to-red-400/20 transition-all duration-1000 ease-out z-0 shadow-[0_0_50px_rgba(239,68,68,0.2)]"
+                                style={{ height: `${Math.max(stats.B, 5)}%` }}
+                            />
+
+                            <div className="relative z-10 flex flex-col items-center gap-4">
+                                <span className="text-7xl font-black text-white drop-shadow-lg">{stats.B}%</span>
+                                <div className="px-6 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                                    <span className="text-lg font-bold uppercase tracking-widest text-red-200">
+                                        {stats.countB} Szavazat
+                                    </span>
+                                </div>
+                                <p className="text-2xl font-bold mt-4 text-center leading-tight max-w-xs">{b}</p>
                             </div>
-                            <div className="w-full flex-1 flex flex-col justify-end bg-red-900/10 rounded-t-xl overflow-hidden min-h-[250px]">
-                                <div
-                                    style={{ height: `${Math.max(stats.B, 2)}%` }}
-                                    className="w-full bg-red-500 transition-all duration-1000 shadow-[0_0_20px_rgba(239,68,68,0.5)]"
-                                />
-                            </div>
-                            <div className="p-4 bg-red-900/30 rounded-xl w-full text-center text-sm font-medium border border-red-500/20">{b}</div>
+
+                            {/* Winner Badge */}
+                            {stats.B > stats.A && (
+                                <div className="absolute top-4 right-4 bg-yellow-500 text-black font-black px-4 py-1 rounded-full text-xs uppercase tracking-widest shadow-lg animate-bounce">
+                                    Népszerűbb
+                                </div>
+                            )}
                         </div>
                     </div>
 
-                    <button onClick={handleNext} className="glass-btn px-12 py-4 text-xl font-bold rounded-full mt-8 bg-white/20">
-                        Következő Kérdés
+                    <button
+                        onClick={handleNext}
+                        className="glass-btn px-16 py-5 text-2xl font-black rounded-full mt-4 hover:scale-110 active:scale-95 transition-all shadow-2xl"
+                    >
+                        Folytatás
                     </button>
                 </div>
             )}
