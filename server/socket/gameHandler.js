@@ -21,10 +21,10 @@ module.exports = (io, socket) => {
 
             socket.join(pin);
             socket.emit('game_created', { pin });
-            console.log(`Game created: ${pin}`);
+            console.log(`✅ Game created successfully: ${pin}`);
         } catch (err) {
-            console.error(err);
-            socket.emit('error', 'Could not create game');
+            console.error('❌ Error creating game:', err);
+            socket.emit('error', 'Szerver hiba a játék létrehozásakor. Ellenőrizd a DB kapcsolatot!');
         }
     });
 

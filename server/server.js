@@ -22,9 +22,14 @@ const io = new Server(server, {
 });
 
 // Database Connection
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.error(err));
+const mongoUri = process.env.MONGO_URI;
+console.log('Attempting to connect to MongoDB...');
+mongoose.connect(mongoUri)
+    .then(() => console.log('✅ MongoDB Connected Successfully'))
+    .catch(err => {
+        console.error('❌ MongoDB Connection Error:', err.message);
+        console.error('URI used:', mongoUri ? mongoUri.split('@')[1] : 'UNDEFINED');
+    });
 
 // Socket.IO
 io.on('connection', (socket) => {
